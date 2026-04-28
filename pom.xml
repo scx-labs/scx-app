@@ -187,7 +187,7 @@
         <hikaricp.version>7.0.2</hikaricp.version>
         <jasypt.version>1.9.3</jasypt.version>
         <scx-sql-mysql.version>0.2.0</scx-sql-mysql.version>
-        <testng.version>7.11.0</testng.version>
+        <testng.version>7.12.0</testng.version>
 
     </properties>
 
