@@ -14,7 +14,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public final class Template  {
+public final class Template {
 
     private final String templatePath;
     private final Map<String, Object> dataMap;

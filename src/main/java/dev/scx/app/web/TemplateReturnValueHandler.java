@@ -13,7 +13,7 @@ public final class TemplateReturnValueHandler implements ReturnValueHandler {
     private TemplateEngine templateEngine;
 
     public TemplateReturnValueHandler(TemplateEngine templateEngine) {
-        this.templateEngine =templateEngine;
+        this.templateEngine = templateEngine;
     }
 
     public TemplateEngine templateEngine() {
