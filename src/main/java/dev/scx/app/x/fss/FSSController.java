@@ -88,7 +88,7 @@ public class FSSController {
         //判断是否上传的是最后一个分块 (因为 索引是以 0 开头的所以这里 -1)
         if (nowChunkIndex == chunkLength - 1) {
             //先将数据写入临时文件中
-            FileUtils.appendToFile(uploadTempFile, fileData);
+            FileUtils.appendToFile(uploadTempFile, fileData.body());
             //获取文件描述信息创建 fssObject 对象
             var newFSSObject = createFSSObjectByFileInfo(fileName, fileSize, fileHash);
             //获取文件真实的存储路径
@@ -116,7 +116,7 @@ public class FSSController {
             var needUploadChunkIndex = lastUploadChunk + 1;
             //当前的区块索引和需要的区块索引相同 就保存文件内容
             if (nowChunkIndex.equals(needUploadChunkIndex)) {
-                FileUtils.appendToFile(uploadTempFile, fileData);
+                FileUtils.appendToFile(uploadTempFile, fileData.body());
                 //将当前上传成功的区块索引和总区块长度保存到配置文件中
                 updateLastUploadChunk(uploadConfigFile, nowChunkIndex, chunkLength);
                 //像前台返回我们需要的下一个区块索引

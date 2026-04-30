@@ -1,9 +1,9 @@
 package dev.scx.app.x.crud.serialization;
 
 import dev.scx.data.aggregation.*;
-import dev.scx.object.ScxObject;
-import dev.scx.object.mapping.NodeMappingException;
-import dev.scx.object.serializer.NodeSerializeException;
+import dev.scx.format.NodeToFormatException;
+import dev.scx.object.ObjectToNodeException;
+import dev.scx.serialize.ScxSerialize;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,8 +15,8 @@ public class AggregationSerializer {
     public static String serializeAggregationToJson(Aggregation aggregation) throws SerializationException {
         var v = serializeAggregation(aggregation);
         try {
-            return ScxObject.toJson(v);
-        } catch (NodeMappingException | NodeSerializeException e) {
+            return ScxSerialize.toJson(v);
+        } catch (ObjectToNodeException| NodeToFormatException e) {
             throw new SerializationException(e);
         }
     }

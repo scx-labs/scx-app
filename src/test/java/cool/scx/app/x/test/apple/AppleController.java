@@ -1,9 +1,9 @@
 package cool.scx.app.x.test.apple;
 
 import dev.scx.app.x.crud.BaseCRUDController;
-import cool.scx.web.annotation.ScxRoute;
+import dev.scx.web.annotation.Routes;
 
-@ScxRoute("api/apple")
+@Routes("api/apple")
 public class AppleController extends BaseCRUDController<AppleService> {
 
 }
