@@ -3,6 +3,7 @@ package dev.scx.app.x.fss;
 
 
 import dev.scx.app.util.FileUtils;
+import dev.scx.app.util.cache.Cache;
 import dev.scx.app.web.Image;
 import dev.scx.app.web.Result;
 import dev.scx.http.exception.InternalServerErrorException;
@@ -61,7 +62,7 @@ public class FSSController {
         return IMAGE_CACHE.computeIfAbsent(cacheKey, k -> {
             var fssObject = checkFSSObjectID(fssObjectID);
             var file = checkPhysicalFile(fssObject);
-            return Image.of(file, width, height, positions);
+            return Image.of(file.toFile(), width, height, positions);
         });
     }
 
@@ -115,7 +116,7 @@ public class FSSController {
             var needUploadChunkIndex = lastUploadChunk + 1;
             //当前的区块索引和需要的区块索引相同 就保存文件内容
             if (nowChunkIndex.equals(needUploadChunkIndex)) {
-                FileUtils.appendToFile(uploadTempFile, fileData.inputStream());
+                FileUtils.appendToFile(uploadTempFile, fileData);
                 //将当前上传成功的区块索引和总区块长度保存到配置文件中
                 updateLastUploadChunk(uploadConfigFile, nowChunkIndex, chunkLength);
                 //像前台返回我们需要的下一个区块索引
