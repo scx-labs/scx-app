@@ -1,7 +1,6 @@
 package dev.scx.app;
 
 import dev.scx.app.annotation.Scheduled;
-import dev.scx.app.annotation.ScheduledList;
 import dev.scx.app.annotation.Component;
 import dev.scx.app.base.BaseModel;
 import dev.scx.app.base.BaseModelService;
@@ -227,7 +226,7 @@ public final class ScxAppHelper {
                 }
                 var scheduledList = Arrays.stream(method.annotations()).flatMap(c -> switch (c) {
                     case Scheduled s -> Stream.of(s);
-                    case ScheduledList f -> Stream.of(f.value());
+                    case Scheduled.List f -> Stream.of(f.value());
                     default -> Stream.of();
                 }).toList();
                 for (Scheduled scheduled : scheduledList) {
