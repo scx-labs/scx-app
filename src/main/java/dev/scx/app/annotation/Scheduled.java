@@ -4,6 +4,8 @@ import java.lang.annotation.*;
 
 /// 调度器注解
 ///
+/// 目前仅支持 cron 形式.
+///
 /// @author scx567888
 /// @version 0.0.1
 @Target(ElementType.METHOD)
