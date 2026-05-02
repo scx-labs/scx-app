@@ -10,9 +10,18 @@ import java.lang.annotation.*;
 /// @version 0.0.1
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(ScheduledList.class)
+@Repeatable(Scheduled.List.class)
 public @interface Scheduled {
 
     String cron();
+
+    /// {@link Scheduled} 的重复注解容器.
+    @Target({ElementType.METHOD})
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List {
+
+        Scheduled[] value();
+
+    }
 
 }
